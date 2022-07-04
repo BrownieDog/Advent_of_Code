@@ -1,0 +1,2 @@
+project(SantasFloorFinder)
+add_executable(SantasFloorFinder main.cpp)
