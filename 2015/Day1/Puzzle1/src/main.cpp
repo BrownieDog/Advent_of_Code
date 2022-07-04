@@ -28,6 +28,9 @@ int main(int argc, char* argv[])
 
 	ifs.open(filename, std::ifstream::in);
 
+	int floor = 0;
+	int count = 0;
+
 	if (!ifs.is_open())
 	{
 		std::cout << "File " << filename << " could not be opened" << std::endl;
@@ -35,19 +38,19 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-
 		char next;
-		int floor = 0;
-		while (ifs.good())
+		while (ifs.good() && floor>-1)
 		{
 			next = ifs.get();
 			switch (next)
 			{
 			case '(':
 				floor++;
+				count++;
 				break;
 			case ')':
 				floor--;
+				count++;
 				break;
 			default:
 				//do not change floor if not one of the above symbols
@@ -56,7 +59,7 @@ int main(int argc, char* argv[])
 		}
 
 		ifs.close();
-		std::cout << "Santa would be on floor " << floor << " after following these instructions." << std::endl;
+		std::cout << "Santa would be on floor " << floor << " after following " << count << " instructions." << std::endl;
 
 		return 0;
 	}
