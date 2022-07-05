@@ -50,7 +50,7 @@ int main()
 		phw = 2 * vh[i] + 2 * vw[i];
 		phl = 2 * vh[i] + 2 * vl[i];
 		plw = 2 * vl[i] + 2 * vw[i];
-		totalRibon += hw * lw * hl + min(phw, phl, plw);
+		totalRibon += vl[i] + vh[i] + vw[i] + min(phw, phl, plw);
 	}
 
 	std::cout << "Total Paper Needed: " << totalPaper << std::endl;
