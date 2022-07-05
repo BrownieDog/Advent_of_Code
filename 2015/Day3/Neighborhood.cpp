@@ -1,14 +1,11 @@
 #include "Neighborhood.hpp"
-using hood::Direction;
-using hood::Neighberhood;
 
 #include <stdexcept>
-using std::runtime_error;
 
 Neighberhood::Neighberhood(size_t radius)
 {
 	//make sure our type is big enough
-	if (radius > SIZE_MAX / 2 - 1) throw runtime_error("radius too large for current type conventions");
+	if (radius > SIZE_MAX / 2 - 1) throw std::runtime_error("radius too large for current type conventions");
 
 	//reserve space
 	visited.reserve(radius * 2 + 1);
