@@ -5,7 +5,7 @@
 //#include <string>
 
 #define INPUT_FILE "C:\\Users\\jonse\\Source\\Repos\\Advent_of_Code\\2015\\Day2\\input.txt"
-//#define MAX_FILE_LINES 10000
+#define MAX_FILE_LINES 10000
 #define MAX_LINE_SIZE 20
 
 int min(int x, int y, int z)
@@ -17,38 +17,30 @@ int min(int x, int y, int z)
 	return z;
 }
 
-int linesInFile()
-{
-	std::ifstream ifs(INPUT_FILE);
-
-	if (!ifs.is_open()) throw std::runtime_error("Couldn't Open File to Count Lines");
-
-	
-	int lines = 0;
-	char s[MAX_LINE_SIZE];
-	for (; !ifs.eof(); lines++) ifs.getline(s, MAX_LINE_SIZE);
-
-	ifs.close();
-	return lines;
-}
-
-
 
 int main()
 {
-	int lines = linesInFile();
+	int lines = MAX_FILE_LINES;
 
 	std::ifstream ifs(INPUT_FILE);
 
 	if (!ifs.is_open()) throw std::runtime_error("Couldn't Open File to Get Dimensions");
 
 	std::vector<int> vh(lines), vw(lines), vl(lines);
-	char x; //filler
+	//char x; //filler
+	char bufh[MAX_LINE_SIZE], bufw[MAX_LINE_SIZE], bufl[MAX_LINE_SIZE];
 
-
-	for (int i = 0; i<lines; i++)
+	for (int i = 0; ifs.good() && i<lines-1; i++)
 	{
-		std::cin >> vh[i] >> x >> vw[i] >> x >> vl[i];
+		//std::cin >> vh[i] >> x >> vw[i] >> x >> vl[i];
+		ifs.getline(bufh, MAX_LINE_SIZE, 'x');
+		ifs.getline(bufw, MAX_LINE_SIZE, 'x');
+		ifs.getline(bufl, MAX_LINE_SIZE);
+
+		vh[i] = atoi(bufh);
+		vw[i] = atoi(bufw);
+		vl[i] = atoi(bufl);
+
 		
 	}
 	
