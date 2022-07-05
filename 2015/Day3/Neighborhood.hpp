@@ -22,7 +22,7 @@ namespace hood
 		size_t xloc;
 		size_t yloc;
 	public:
-		Neighberhood();
+		Neighberhood() = delete;
 		Neighberhood(size_t radius);
 		void traverse(vector<Direction> instructions);
 		size_t numVisited();
