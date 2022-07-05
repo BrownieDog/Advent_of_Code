@@ -1,8 +1,7 @@
-#include <fstream>
-#include <iostream>
-#include <vector>
+#include <fstream> //ifstream
+#include <iostream> //cout
+#include <vector> 
 #include <exception>
-//#include <string>
 
 #define INPUT_FILE "C:\\Users\\jonse\\Source\\Repos\\Advent_of_Code\\2015\\Day2\\input.txt"
 #define MAX_FILE_LINES 10000
@@ -20,17 +19,13 @@ int min(int x, int y, int z)
 
 int main()
 {
-	int lines = MAX_FILE_LINES;
-
 	std::ifstream ifs(INPUT_FILE);
 
 	if (!ifs.is_open()) throw std::runtime_error("Couldn't Open File to Get Dimensions");
 
-	std::vector<int> vh(lines), vw(lines), vl(lines);
-	//char x; //filler
+	std::vector<int> vh(MAX_FILE_LINES), vw(MAX_FILE_LINES), vl(MAX_FILE_LINES);
 	char bufh[MAX_LINE_SIZE], bufw[MAX_LINE_SIZE], bufl[MAX_LINE_SIZE];
-
-	for (int i = 0; ifs.good() && i<lines-1; i++)
+	for (int i = 0; ifs.good() && i< MAX_FILE_LINES -1; i++)
 	{
 		//std::cin >> vh[i] >> x >> vw[i] >> x >> vl[i];
 		ifs.getline(bufh, MAX_LINE_SIZE, 'x');
@@ -58,6 +53,5 @@ int main()
 
 	std::cout << "Total Paper Needed: " << totalPaper << std::endl;
 	
-
 	return 0;
 }
