@@ -6,7 +6,7 @@ using std::ifstream;
 using std::cin;
 using std::cout;
 using std::endl;
-#include <exception>
+#include <stdexcept>
 using std::runtime_error;
 
 #include "Neighborhood.hpp"
@@ -60,11 +60,13 @@ int main()
 	instructions = importData();
 
 	//create neighborhood
-
+	Neighberhood n(instructions.size());
 
 	//deliver gifts
+	n.traverse(instructions);
 
 	//tally results
+	cout << "Delivered presents to " << n.numVisited() << " unique houses" << endl;
 	
 	return 0;
 }
