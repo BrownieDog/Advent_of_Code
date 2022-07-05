@@ -16,7 +16,6 @@ int min(int x, int y, int z)
 	return z;
 }
 
-
 int main()
 {
 	std::ifstream ifs(INPUT_FILE);
@@ -24,7 +23,7 @@ int main()
 
 	std::vector<int> vh(MAX_FILE_LINES), vw(MAX_FILE_LINES), vl(MAX_FILE_LINES);
 	char bufh[MAX_LINE_SIZE], bufw[MAX_LINE_SIZE], bufl[MAX_LINE_SIZE];
-	for (int i = 0; ifs.good() && i< MAX_FILE_LINES -1; i++)
+	for (int i = 0; ifs.good() && i < MAX_FILE_LINES - 1; i++)
 	{
 		ifs.getline(bufh, MAX_LINE_SIZE, 'x');
 		ifs.getline(bufw, MAX_LINE_SIZE, 'x');
@@ -34,7 +33,7 @@ int main()
 		vw[i] = atoi(bufw);
 		vl[i] = atoi(bufl);	
 	}
-	
+
 	ifs.close();
 
 	int totalPaper = 0;
