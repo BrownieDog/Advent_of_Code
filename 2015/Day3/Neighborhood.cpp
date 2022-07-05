@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-Neighberhood::Neighberhood(size_t radius)
+Neighborhood::Neighborhood(size_t radius)
 {
 	//make sure our type is big enough
 	if (radius > SIZE_MAX / 2 - 1) throw std::runtime_error("radius too large for current type conventions");
@@ -33,7 +33,7 @@ Neighberhood::Neighberhood(size_t radius)
 
 }
 
-void Neighberhood::traverse(vector<Direction> instructions)
+void Neighborhood::traverse(vector<Direction> instructions)
 {
 	for (Direction d : instructions)
 	{
@@ -59,7 +59,7 @@ void Neighberhood::traverse(vector<Direction> instructions)
 	}
 }
 
-size_t Neighberhood::numVisited()
+size_t Neighborhood::numVisited()
 {
 	size_t n = 0;
 	for (vector<Direction> vd : visited)

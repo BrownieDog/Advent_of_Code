@@ -52,7 +52,7 @@ int main()
 	instructions = importData();
 
 	//create neighborhood
-	Neighberhood n(instructions.size());
+	Neighborhood n(instructions.size());
 
 	//deliver gifts
 	n.traverse(instructions);
