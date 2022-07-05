@@ -16,18 +16,14 @@ int min(int x, int y, int z)
 	return z;
 }
 
-
-int main()
+void fillInput(std::vector<int> &vh, std::vector<int> &vw, std::vector<int> &vl)
 {
 	std::ifstream ifs(INPUT_FILE);
-
 	if (!ifs.is_open()) throw std::runtime_error("Couldn't Open File to Get Dimensions");
 
-	std::vector<int> vh(MAX_FILE_LINES), vw(MAX_FILE_LINES), vl(MAX_FILE_LINES);
 	char bufh[MAX_LINE_SIZE], bufw[MAX_LINE_SIZE], bufl[MAX_LINE_SIZE];
-	for (int i = 0; ifs.good() && i< MAX_FILE_LINES -1; i++)
+	for (int i = 0; ifs.good() && i < MAX_FILE_LINES - 1; i++)
 	{
-		//std::cin >> vh[i] >> x >> vw[i] >> x >> vl[i];
 		ifs.getline(bufh, MAX_LINE_SIZE, 'x');
 		ifs.getline(bufw, MAX_LINE_SIZE, 'x');
 		ifs.getline(bufl, MAX_LINE_SIZE);
@@ -35,12 +31,13 @@ int main()
 		vh[i] = atoi(bufh);
 		vw[i] = atoi(bufw);
 		vl[i] = atoi(bufl);
-
-		
 	}
-	
-	ifs.close();
 
+	ifs.close();
+}
+
+void partOne(std::vector<int> vh, std::vector<int> vw, std::vector<int> vl)
+{
 	int totalPaper = 0;
 	int hw, hl, lw;
 	for (int i = 0; i < vh.size(); i++)
@@ -52,6 +49,22 @@ int main()
 	}
 
 	std::cout << "Total Paper Needed: " << totalPaper << std::endl;
-	
+
+}
+
+void partTwo(std::vector<int> vh, std::vector<int> vw, std::vector<int> vl)
+{
+
+}
+
+int main()
+{
+	std::vector<int> vh(MAX_FILE_LINES), vw(MAX_FILE_LINES), vl(MAX_FILE_LINES);
+
+	fillInput(vh, vw, vl);
+
+	partOne(vh, vw, vl);
+	partTwo(vh, vw, vl);
+
 	return 0;
 }
