@@ -33,7 +33,7 @@ Neighborhood::Neighborhood(size_t radius)
 
 }
 
-void Neighborhood::traverse(vector<Direction> instructions)
+void Neighborhood::traverse(std::vector<Direction> instructions)
 {
 	for (Direction d : instructions)
 	{
@@ -51,7 +51,7 @@ void Neighborhood::traverse(vector<Direction> instructions)
 		case Direction::RIGHT:
 			xloc++;
 			break;
-		default;
+		default:
 			//panic
 			break;
 		}
@@ -62,7 +62,7 @@ void Neighborhood::traverse(vector<Direction> instructions)
 size_t Neighborhood::numVisited()
 {
 	size_t n = 0;
-	for (vector<Direction> vd : visited)
+	for (std::vector<bool> vd : visited)
 	{
 		for (bool b : vd)
 		{
