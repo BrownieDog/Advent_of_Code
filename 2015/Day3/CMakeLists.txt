@@ -1,3 +1,3 @@
 project(PresentGrid)
 
-add_executable(PresentGrid main.cpp Neighborhood.hpp)
+add_executable(PresentGrid Neighborhood.hpp Neighborhood.cpp main.cpp)
