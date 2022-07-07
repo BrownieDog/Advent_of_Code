@@ -40,33 +40,59 @@ struct House
 size_t traverse(std::vector<Direction> const& instructions)
 {
 	std::set<House> vistedHouses;
+	House h(0, 0);
+	vistedHouses.emplace(h);
+
 	int curx = 0;
 	int cury = 0;
-	House h(0,0);
+	int robox = 0;
+	int roboy = 0;
+	int count = 0;
 
-	vistedHouses.emplace(h);
 	for(Direction d : instructions)
 	{
+		count++;
 		switch (d)
 		{
 		case Direction::UP:
-			cury++;
+			if (count % 2 == 0)
+				roboy++;
+			else
+				cury++;
 			break;
 		case Direction::DOWN:
-			cury--;
+			if (count % 2 == 0)
+				roboy--;
+			else
+				cury--;
 			break;
 		case Direction::LEFT:
-			curx--;
+			if (count % 2 == 0)
+				robox--;
+			else
+				curx--;
 			break;
 		case Direction::RIGHT:
-			curx++;
+			if (count % 2 == 0)
+				robox++;
+			else
+				curx++;
 			break;
 		default:
 			break;
 		}
 
-		h.x = curx;
-		h.y = cury;
+		if (count % 2 == 0)
+		{
+			h.x = robox;
+			h.y = roboy;
+		}
+		else
+		{
+			h.x = curx;
+			h.y = cury;
+		}
+
 		vistedHouses.insert(h);
 
 	}
