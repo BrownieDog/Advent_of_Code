@@ -1,10 +1,11 @@
 #include <vector>
-#include <fstream>
+//#include <fstream>
 #include <iostream>
-#include <exception>
+//#include <exception>
+#include <set>
 
-#define FILENAME_W "C:\\Users\\jonse\\Source\\Repos\\Advent_of_Code\\2015\\Day3\\input.txt"
-#define FILENAME_U "~/Source/Repos/Advent_of_Code/input_files/2015_Day3.txt"
+// #define FILENAME_W "C:\\Users\\jonse\\Source\\Repos\\Advent_of_Code\\2015\\Day3\\input.txt"
+// #define FILENAME_U "~/Source/Repos/Advent_of_Code/input_files/2015_Day3.txt"
 
 enum Direction
 {
@@ -13,6 +14,54 @@ enum Direction
 	LEFT,
 	RIGHT
 };
+
+struct House
+{
+	int x;
+	int y;
+
+	House() 
+	: x(0), y(0)
+	{}
+
+	House(int xPos, int yPos)
+	: x(xPos), y(yPos)
+	{}
+
+	inline bool operator< (House& other)
+	{
+		if (x == other.x)
+		{
+			return y < other.y;
+		}
+		return x < other.x;
+	}
+};
+
+
+/**
+ * @brief Walks through Santa's instructions, adding all
+ * viseted houses to a list.
+ * 
+ * @param instructions list of instructions to traverse
+ * @return size_t The number of houses visited
+ */
+size_t traverse(std::vector<Direction> const& instructions)
+{
+	std::set<House> vistedHouses;
+	int curx = 0;
+	int cury = 0;
+	House h(0,0);
+
+	vistedHouses.emplace(h);
+	for(Direction d : instructions)
+	{
+		switch (d)
+		{
+
+		}
+	}
+}
 
 
 std::vector<Direction> importData()
@@ -23,7 +72,7 @@ std::vector<Direction> importData()
 	std::vector<Direction> vd(0);
 	char c;
 	Direction d;
-	while(true)//for(int i=0; i<1000; i++) //while (ifs.good())
+	while(!std::cin.eof())//for(int i=0; i<1000; i++) //while (ifs.good())
 	{
 		std::cin >> c;
 		switch (c)
@@ -73,7 +122,9 @@ int main()
 	std::cout << std::endl;
 
 	//create neighborhood
-	//deliver gifts
+	//give presents
+	traverse(instructions);
+
 
 	//tally results
 	
