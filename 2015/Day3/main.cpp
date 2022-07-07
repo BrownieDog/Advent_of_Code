@@ -28,13 +28,15 @@ struct House
 	: x(xPos), y(yPos)
 	{}
 
-	inline bool operator< (House& other)
+	friend bool operator< (House const& left, House const& right)
 	{
-		if (x == other.x)
+		/*if (x == other.x)
 		{
 			return y < other.y;
 		}
-		return x < other.x;
+		return x < other.x;*/
+		//this one looks cooler than the one above it so we're using it instead uwu (Where are my god damn programmer socks??)
+		return (left.x == right.x ? left.y < right.y : left.x < right.x);
 	}
 };
 
@@ -58,9 +60,29 @@ size_t traverse(std::vector<Direction> const& instructions)
 	{
 		switch (d)
 		{
-
+		case Direction::UP:
+			cury++;
+			break;
+		case Direction::DOWN:
+			cury--;
+			break;
+		case Direction::LEFT:
+			curx--;
+			break;
+		case Direction::RIGHT:
+			curx++;
+			break;
+		default:
+			break;
 		}
+
+		h.x = curx;
+		h.y = cury;
+		vistedHouses.insert(h);
+
 	}
+
+	return vistedHouses.size();
 }
 
 
@@ -123,10 +145,17 @@ int main()
 
 	//create neighborhood
 	//give presents
-	traverse(instructions);
-
-
 	//tally results
+	size_t visited_count = traverse(instructions);
+
+
+	//display results
+	if (visited_count >= instructions.size())
+	{
+		std::cout << "Warning, visited just as many or more houses than instruction count" << std::endl;
+	}
+	
+	std::cout << "Visited " << visited_count << " unique houses." << std::endl;
 	
 	return 0;
 }
