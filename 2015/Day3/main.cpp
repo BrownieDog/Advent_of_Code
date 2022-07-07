@@ -1,11 +1,6 @@
 #include <vector>
-//#include <fstream>
 #include <iostream>
-//#include <exception>
 #include <set>
-
-// #define FILENAME_W "C:\\Users\\jonse\\Source\\Repos\\Advent_of_Code\\2015\\Day3\\input.txt"
-// #define FILENAME_U "~/Source/Repos/Advent_of_Code/input_files/2015_Day3.txt"
 
 enum Direction
 {
@@ -30,12 +25,6 @@ struct House
 
 	friend bool operator< (House const& left, House const& right)
 	{
-		/*if (x == other.x)
-		{
-			return y < other.y;
-		}
-		return x < other.x;*/
-		//this one looks cooler than the one above it so we're using it instead uwu (Where are my god damn programmer socks??)
 		return (left.x == right.x ? left.y < right.y : left.x < right.x);
 	}
 };
@@ -88,13 +77,11 @@ size_t traverse(std::vector<Direction> const& instructions)
 
 std::vector<Direction> importData()
 {
-	//std::ifstream ifs(FILENAME_U);
-	//if (!ifs.is_open()) throw std::runtime_error("Could not open input file");
-	
+
 	std::vector<Direction> vd(0);
 	char c;
 	Direction d;
-	while(!std::cin.eof())//for(int i=0; i<1000; i++) //while (ifs.good())
+	while(!std::cin.eof())
 	{
 		std::cin >> c;
 		switch (c)
@@ -112,15 +99,11 @@ std::vector<Direction> importData()
 			d = Direction::DOWN;
 			break;
 		default:
-			//throw std::runtime_error("Tried to parse character other that ^v<>");
 			return vd;
 			break;
 		}
 		vd.emplace_back(d);
 	}
-
-	//ifs.close();
-
 	return vd;
 }
 
@@ -150,11 +133,6 @@ int main()
 
 
 	//display results
-	if (visited_count >= instructions.size())
-	{
-		std::cout << "Warning, visited just as many or more houses than instruction count" << std::endl;
-	}
-	
 	std::cout << "Visited " << visited_count << " unique houses." << std::endl;
 	
 	return 0;
