@@ -19,7 +19,7 @@ std::vector<Direction> importData()
 	std::ifstream ifs(FILENAME);
 	if (!ifs.is_open()) throw std::runtime_error("Could not open input file");
 	
-	std::vector<Direction> vd;
+	std::vector<Direction> vd(1);
 	char c;
 	Direction d;
 	while (ifs.good())
@@ -43,7 +43,7 @@ std::vector<Direction> importData()
 			throw std::runtime_error("Tried to parse character other that ^v<>");
 			break;
 		}
-		vd.insert(vd.end(), d);
+		vd.emplace_back(d);
 	}
 
 	ifs.close();
