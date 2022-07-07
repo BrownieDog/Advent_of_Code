@@ -20,7 +20,7 @@ std::vector<Direction> importData()
 	//std::ifstream ifs(FILENAME_U);
 	//if (!ifs.is_open()) throw std::runtime_error("Could not open input file");
 	
-	std::vector<Direction> vd(1);
+	std::vector<Direction> vd(0);
 	char c;
 	Direction d;
 	while(true)//for(int i=0; i<1000; i++) //while (ifs.good())
@@ -61,9 +61,14 @@ int main()
 	instructions = importData();
 
 	std::cout << "Imported: ";
-	for (char c : instructions)
+	for (Direction d : instructions)
 	{
-		std::cout << c;
+		std::cout << (
+			(d == Direction::UP)   ? '^' :
+			(d == Direction::DOWN) ? 'v' :
+			(d == Direction::LEFT) ? '<' :
+									 '>'//Direction::RIGHT
+			); 
 	}
 	std::cout << std::endl;
 
