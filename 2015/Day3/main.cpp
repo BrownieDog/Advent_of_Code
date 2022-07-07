@@ -17,13 +17,13 @@ enum Direction
 
 std::vector<Direction> importData()
 {
-	std::ifstream ifs(FILENAME_U);
-	if (!ifs.is_open()) throw std::runtime_error("Could not open input file");
+	//std::ifstream ifs(FILENAME_U);
+	//if (!ifs.is_open()) throw std::runtime_error("Could not open input file");
 	
 	std::vector<Direction> vd(1);
 	char c;
 	Direction d;
-	while (ifs.good())
+	while(true)//for(int i=0; i<1000; i++) //while (ifs.good())
 	{
 		std::cin >> c;
 		switch (c)
@@ -41,13 +41,14 @@ std::vector<Direction> importData()
 			d = Direction::DOWN;
 			break;
 		default:
-			throw std::runtime_error("Tried to parse character other that ^v<>");
+			//throw std::runtime_error("Tried to parse character other that ^v<>");
+			return vd;
 			break;
 		}
 		vd.emplace_back(d);
 	}
 
-	ifs.close();
+	//ifs.close();
 
 	return vd;
 }
@@ -59,9 +60,14 @@ int main()
 	std::vector<Direction> instructions;
 	instructions = importData();
 
+	std::cout << "Imported: ";
+	for (char c : instructions)
+	{
+		std::cout << c;
+	}
+	std::cout << std::endl;
+
 	//create neighborhood
-
-
 	//deliver gifts
 
 	//tally results
