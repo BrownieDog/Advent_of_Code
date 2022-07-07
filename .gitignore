@@ -1,5 +1,10 @@
+#ide files
 .vs/
+.vscode/
+
+# build directory
 out/
+bulid/
 
 
 ### GENERATED CODE ###

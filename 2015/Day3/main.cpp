@@ -3,7 +3,8 @@
 #include <iostream>
 #include <exception>
 
-#define FILENAME "C:\\Users\\jonse\\Source\\Repos\\Advent_of_Code\\2015\\Day3\\input.txt"
+#define FILENAME_W "C:\\Users\\jonse\\Source\\Repos\\Advent_of_Code\\2015\\Day3\\input.txt"
+#define FILENAME_U "~/Source/Repos/Advent_of_Code/input_files/2015_Day3.txt"
 
 enum Direction
 {
@@ -16,7 +17,7 @@ enum Direction
 
 std::vector<Direction> importData()
 {
-	std::ifstream ifs(FILENAME);
+	std::ifstream ifs(FILENAME_U);
 	if (!ifs.is_open()) throw std::runtime_error("Could not open input file");
 	
 	std::vector<Direction> vd(1);
